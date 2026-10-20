@@ -380,7 +380,66 @@ nav a:hover {
       </p>
     </section>
 
-    <section class="contact" id="contact">
+
+<section class="contact" id="quote">
+  <div class="section-title">
+    <h2>Request a Shipping Quote</h2>
+    <p>Tell us about your shipment, and BAYEX LIMITED will assist you.</p>
+  </div>
+
+  <form id="quoteForm">
+    <p>
+      <label for="quoteName">Full Name</label><br>
+      <input type="text" id="quoteName" name="name" required>
+    </p>
+
+    <p>
+      <label for="quotePhone">Phone / WhatsApp</label><br>
+      <input type="tel" id="quotePhone" name="phone" required>
+    </p>
+
+    <p>
+      <label for="quoteEmail">Email Address</label><br>
+      <input type="email" id="quoteEmail" name="email">
+    </p>
+
+    <p>
+      <label for="quoteService">Service Required</label><br>
+      <select id="quoteService" name="service" required>
+        <option value="">Select a service</option>
+        <option>Courier & Parcel Services</option>
+        <option>Import & Export Services</option>
+        <option>Shipping & Freight Support</option>
+        <option>Shipping Documentation</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="quoteFrom">Shipping From</label><br>
+      <input type="text" id="quoteFrom" name="shipping_from" placeholder="City and country" required>
+    </p>
+
+    <p>
+      <label for="quoteTo">Shipping To</label><br>
+      <input type="text" id="quoteTo" name="shipping_to" placeholder="City and country" required>
+    </p>
+
+    <p>
+      <label for="quoteWeight">Estimated Weight (kg)</label><br>
+      <input type="number" id="quoteWeight" name="weight_kg" min="0.1" step="0.1" placeholder="If known">
+    </p>
+
+    <p>
+      <label for="quoteDetails">Shipment Details</label><br>
+      <textarea id="quoteDetails" name="details" rows="4" placeholder="Describe the items, quantity, dimensions, or other requirements" required></textarea>
+    </p>
+
+    <button type="button" onclick="sendQuoteWhatsApp()">Send Quote Request by WhatsApp</button>
+    <button type="button" onclick="sendQuoteEmail()">Send Quote Request by Email</button>
+  </form>
+</section>
+    
+<section class="contact" id="contact">
       <div class="section-title">
         <h2>Contact Us</h2>
         <p>Have a shipment or business enquiry? We would be happy to hear from you.</p>
@@ -496,6 +555,59 @@ nav a:hover {
 }
 
 </style>
+
+
+<script>
+function sendQuoteWhatsApp() {
+  const fields = [
+    ["Full Name", "quoteName"],
+    ["Phone / WhatsApp", "quotePhone"],
+    ["Email", "quoteEmail"],
+    ["Service Required", "quoteService"],
+    ["Shipping From", "quoteFrom"],
+    ["Shipping To", "quoteTo"],
+    ["Estimated Weight (kg)", "quoteWeight"],
+    ["Shipment Details", "quoteDetails"]
+  ];
+
+  const lines = ["BAYEX LIMITED - SHIPPING QUOTE REQUEST", ""];
+
+  for (const [label, id] of fields) {
+    const value = document.getElementById(id).value.trim();
+    if (id !== "quoteEmail" && id !== "quoteWeight" && !value) {
+      alert("Please complete: " + label);
+      document.getElementById(id).focus();
+      return;
+    }
+    lines.push(label + ": " + (value || "Not provided"));
+  }
+
+  const message = encodeURIComponent(lines.join("\n"));
+  window.open("https://wa.me/233242334330?text=" + message, "_blank");
+}
+
+
+function sendQuoteEmail() {
+  const form = document.getElementById("quoteForm");
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  form.method = "POST";
+  form.action = "https://formsubmit.co/BAYEX.COURIER@GMAIL.COM";
+
+  const subject = document.createElement("input");
+  subject.type = "hidden";
+  subject.name = "_subject";
+  subject.value = "New BAYEX LIMITED Shipping Quote Request";
+  form.appendChild(subject);
+
+  form.submit();
+}
+
+</script>
+</body>
 
 </body>
 </html>
