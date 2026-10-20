@@ -105,20 +105,39 @@
       gap: 22px;
     }
 
-    .service {
-      padding: 25px;
-      border: 1px solid #e1e7ef;
-      border-radius: 10px;
-      background: #ffffff;
-    }
+    
+.service {
+  padding: 30px 25px;
+  border: 1px solid #e1e7ef;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(8, 43, 92, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-    .service .symbol {
-      font-size: 32px;
-    }
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(8, 43, 92, 0.12);
+  border-color: #c5d6ee;
+}
 
-    .service h3 {
-      color: #082b5c;
-    }
+.service .symbol {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.service h3 {
+  color: #082b5c;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.service p {
+  color: #526174;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 
     .about {
       background: #f2f6fb;
@@ -188,29 +207,31 @@
       </div>
 
       <div class="services">
-        <article class="service">
-          <div class="symbol">📦</div>
-          <h3>Courier & Parcel Support</h3>
-          <p>Assistance with sending and receiving parcels locally and internationally.</p>
-        </article>
+       
+<article class="service">
+  <div class="symbol">📦</div>
+  <h3>Courier & Parcel Services</h3>
+  <p>Reliable support for sending and receiving parcels, documents and packages locally and internationally.</p>
+</article>
 
-        <article class="service">
-          <div class="symbol">🌍</div>
-          <h3>Import & Export</h3>
-          <p>Support for businesses moving goods between Ghana and international markets.</p>
-        </article>
+<article class="service">
+  <div class="symbol">🌍</div>
+  <h3>Import & Export Services</h3>
+  <p>Helping individuals and businesses coordinate shipments between Ghana and international markets.</p>
+</article>
 
-        <article class="service">
-          <div class="symbol">✈️</div>
-          <h3>Shipping & Logistics</h3>
-          <p>Help coordinating shipping requirements and preparing shipment information.</p>
-        </article>
+<article class="service">
+  <div class="symbol">✈️</div>
+  <h3>Shipping & Freight Support</h3>
+  <p>Practical assistance with shipping arrangements, shipment coordination and freight documentation.</p>
+</article>
 
-        <article class="service">
-          <div class="symbol">📄</div>
-          <h3>Documentation Support</h3>
-          <p>Assistance preparing commercial invoices, packing lists and shipment details.</p>
-        </article>
+<article class="service">
+  <div class="symbol">📄</div>
+  <h3>Shipping Documentation</h3>
+  <p>Support with commercial invoices, packing lists, shipment details and customs paperwork preparation.</p>
+</article>
+
       </div>
     </section>
 
